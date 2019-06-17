@@ -7,15 +7,17 @@ import axios from '../utils/axios'
 
 class IndexPage extends React.Component{
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
       categories:[]
     }
   }
 
 componentDidMount(){
+  
   this.loadCategory();
 }
+
 loadCategory(){
   axios.get('/category/findAll')
   .then((result)=>{
@@ -25,6 +27,12 @@ loadCategory(){
     })
   });
 }
+
+toProduct(){
+  this.props.history.push("/product");
+}
+
+
   render(){
     return(
     <div>
@@ -40,7 +48,7 @@ loadCategory(){
             {
               this.state.categories.map((item)=>{
                 return (
-                  <li className={styles["category_list_item"]}>
+                  <li  onLick={this.toProduct.bind(this)} key={item.id} className={styles["category_list_item"]}>
                     <div>
                       
                     </div>
