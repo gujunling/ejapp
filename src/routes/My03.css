@@ -1,0 +1,10 @@
+.tab{
+
+    height:87vh;
+        scroll-padding-top: 100%;
+        padding-right: 0%;
+        display: 'flex';
+       padding-bottom: 0%;
+        
+        background-color: aquamarine
+    }

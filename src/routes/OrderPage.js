@@ -1,19 +1,31 @@
 import React from 'react'
 import { Menu, ActivityIndicator, NavBar } from 'antd-mobile';
-import styles from './OrderPage.css'
+
 const data = [
   {
     value: '1',
     label: '洗护',
     children: [
       {
-        label: 'All Foods',
+        label: '大衣',
         value: '1',
         disabled: false,
       },
       {
-        label: 'Chinese Food',
+        label: '裤子',
         value: '2',
+      },
+      {
+        label: '外套',
+        value: '3',
+      },
+      {
+        label: '鞋子',
+        value: '4',
+      },
+      {
+        label: '其他衣物',
+        value: '5',
       }
       
     ],
@@ -22,7 +34,7 @@ const data = [
     label: '保洁',
     children: [
       {
-        label: 'All Supermarkets',
+        label: '打扫房间',
         value: '1',
       }],
   },
@@ -32,8 +44,12 @@ const data = [
     disabled: true,
     children: [
       {
-        label: 'hhahhvwcgbyuhnj',
+        label: '照顾老人',
         value: '1',
+      },
+      {
+        label: '照顾小孩',
+        value: '2',
       },
     ],
   },
@@ -43,7 +59,7 @@ const data = [
     disabled: true,
     children: [
       {
-        label: 'hahaha',
+        label: '照顾孕妇',
         value: '1',
       },
     ],
@@ -54,7 +70,7 @@ const data = [
     disabled: true,
     children: [
       {
-        label: 'qwer',
+        label: '其他业务',
         value: '1',
       },
     ],
@@ -125,14 +141,14 @@ class OrderPage extends React.Component {
       </div>
     );
     return (
-      <div className={show ? styles ["menu-active"] : ''}>
+      <div className={show ? "menu-active" : ''}>
         <div>
           <NavBar
             leftContent="菜单"
             mode="light"
             icon={<img src="https://gw.alipayobjects.com/zos/rmsportal/iXVHARNNlmdCGnwWxQPH.svg" className="am-icon am-icon-md" alt="" />}
             onLeftClick={this.handleClick}
-            className={styles ["top-nav-bar"]}
+            className={"top-nav-bar"}
           >
             商品分类
           </NavBar>

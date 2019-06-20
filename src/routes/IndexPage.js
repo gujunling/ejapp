@@ -1,21 +1,28 @@
 import React from 'react';
 import { connect } from 'dva';
-import t from '../assets/yay.jpg'
 import styles from './IndexPage.css'
 import axios from '../utils/axios'
-
+import { Carousel, WingBlank,NoticeBar, WhiteSpace, Icon } from 'antd-mobile';
 
 class IndexPage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      categories:[]
+      categories:[],
+      data: ['1', '2', '3'],
+      imgHeight: 176,
     }
   }
+  
 
 componentDidMount(){
   
   this.loadCategory();
+  setTimeout(() => {
+    this.setState({
+      data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+    });
+  }, 100);
 }
 
 loadCategory(){
@@ -37,10 +44,36 @@ toProduct(){
     return(
     <div>
      {/* {图片} */}
-     <div className={styles.photoWall}>
-      <img className={styles.photo} src={t}></img>
-     </div>
+     <div >
+      
 
+     <WingBlank>
+        <Carousel  
+          autoplay={false}
+          infinite
+          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+          afterChange={index => console.log('slide to', index)}
+        >
+          {this.state.data.map((val ) => (
+            <a
+              key={val}
+              href="http://www.alipay.com"
+              style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
+            >
+              <img
+                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                alt=""
+                style={{ width: '100%', verticalAlign: 'top' }}
+                onLoad={() => {
+                  window.dispatchEvent(new Event('resize'));
+                  this.setState({ imgHeight: 'auto' });
+                }}
+              />
+            </a>
+          ))}
+        </Carousel>
+      </WingBlank>
+     </div>
 
      {/* {栏目} */}
      <div>
@@ -61,7 +94,32 @@ toProduct(){
      </div>
      {/* {产品} */}
      <div>
-       <p>产品</p>
+    
+  <div>
+    <WhiteSpace size="lg" />
+    <NoticeBar marqueeProps={{ loop: true, style: { padding: '0 7.5px' } }}>
+    Notice:您好，您有一条关于您最近经常查看的问题的消息，请您查阅！
+    </NoticeBar>
+    <WhiteSpace size="lg" />
+    <NoticeBar mode="link" onClick={() => alert('1')}>
+      Notice: The arrival time of incomes and transfers of Yu &#39;E Bao will be delayed during National Day.
+    </NoticeBar>
+    <WhiteSpace size="lg" />
+    <NoticeBar mode="closable" icon={null}>Remove the default icon.</NoticeBar>
+    <WhiteSpace size="lg" />
+    <NoticeBar mode="closable" icon={<Icon type="check-circle-o" size="xxs" />}>
+      Customized icon.
+    </NoticeBar>
+    <WhiteSpace size="lg" />
+    <NoticeBar mode="closable" action={<span style={{ color: '#a1a1a1' }}>不再提示</span>}>
+      Closable demo for `actionText`.
+    </NoticeBar>
+    <WhiteSpace size="lg" />
+    <NoticeBar mode="link" action={<span>去看看</span>}>
+      Link demo for `actionText`.
+    </NoticeBar>
+  </div>
+
      </div>
      </div>
      );

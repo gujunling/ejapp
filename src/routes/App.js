@@ -74,6 +74,7 @@ class App extends React.Component {
               <TabBar.Item
                 title="首页"
                 key="index"
+                dot
                 icon={<div style={{
                   width: '22px',
                   height: '22px',
@@ -109,7 +110,8 @@ class App extends React.Component {
                 }
                 title="订单"
                 key="order"
-                badge={'new'}
+                dot
+                // badge={'new'}
                 selected={this.state.selectedTab === 'order'}
                 onPress={this.handlerTabChange.bind(this,'order')}
                 data-seed="logId1"
@@ -142,9 +144,11 @@ class App extends React.Component {
                 selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
                 title="我的"
                 key="my"
+                dot
                 selected={this.state.selectedTab === 'my'}
                 onPress={this.handlerTabChange.bind(this,'my')}
               >
+                {this.renderContent()}
               </TabBar.Item>
         </TabBar>
       </div>
