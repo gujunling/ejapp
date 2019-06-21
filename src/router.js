@@ -42,5 +42,5 @@ function RouterConfig({ history }) {
     </Router>
   );
 }
-document.title="E洁家政";
+document.title="E洁家政APP";
 export default RouterConfig;
